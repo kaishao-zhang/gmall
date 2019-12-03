@@ -16,5 +16,7 @@ import com.atguigu.core.bean.QueryCondition;
 public interface AttrService extends IService<AttrEntity> {
 
     PageVo queryPage(QueryCondition params);
+    //通过catid（所属分类的id）查找属性信息
+    PageVo queryAttrByCatId(QueryCondition condition, Long catId, Integer type);
 }
 

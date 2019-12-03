@@ -33,6 +33,12 @@ public class AttrController {
     @Autowired
     private AttrService attrService;
 
+    @GetMapping
+    public Resp<PageVo> queryAttrByCatId(QueryCondition condition,Long cid,Integer type){
+        System.out.println("进来了，catId="+cid+"type="+type);
+        PageVo pageVo = this.attrService.queryAttrByCatId(condition,cid,type);
+        return Resp.ok(pageVo);
+    }
     /**
      * 列表
      */

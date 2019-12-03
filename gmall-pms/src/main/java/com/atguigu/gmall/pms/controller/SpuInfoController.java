@@ -1,6 +1,7 @@
 package com.atguigu.gmall.pms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -32,7 +33,11 @@ import com.atguigu.gmall.pms.service.SpuInfoService;
 public class SpuInfoController {
     @Autowired
     private SpuInfoService spuInfoService;
-
+    @GetMapping
+    public Resp<PageVo> querySpuInfoByCatId(QueryCondition queryCondition,Long catId){
+        PageVo pageVo  =this.spuInfoService.querySpuInfoByCatId(queryCondition,catId);
+        return Resp.ok(pageVo);
+    }
     /**
      * 列表
      */
@@ -66,7 +71,6 @@ public class SpuInfoController {
     @PreAuthorize("hasAuthority('pms:spuinfo:save')")
     public Resp<Object> save(@RequestBody SpuInfoEntity spuInfo){
 		spuInfoService.save(spuInfo);
-
         return Resp.ok(null);
     }
 

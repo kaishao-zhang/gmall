@@ -27,4 +27,13 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         return new PageVo(page);
     }
 
+    @Override
+    public PageVo querySpuInfoByCatId(QueryCondition queryCondition, Long catId) {
+        QueryWrapper<SpuInfoEntity> wrapper = new QueryWrapper<>();
+        wrapper.eq("catalog_id",catId);
+        IPage<SpuInfoEntity> page = this.page(new Query<SpuInfoEntity>().getPage(queryCondition)
+                , wrapper);
+        return new PageVo(page);
+    }
+
 }

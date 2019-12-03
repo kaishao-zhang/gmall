@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.atguigu.gmall.pms.entity.SpuInfoEntity;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
+import org.springframework.data.domain.Page;
 
 
 /**
@@ -16,5 +17,7 @@ import com.atguigu.core.bean.QueryCondition;
 public interface SpuInfoService extends IService<SpuInfoEntity> {
 
     PageVo queryPage(QueryCondition params);
+    //根据catId查询spu的信息
+    PageVo querySpuInfoByCatId(QueryCondition queryCondition, Long catId);
 }
 
