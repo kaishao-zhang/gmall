@@ -12,7 +12,7 @@ import java.util.List;
  * @create 2019-12-03 19:39
  */
 @Data
-public class AttrGroupVo extends AttrGroupEntity {
+public class AttrGroupVO extends AttrGroupEntity {
 
     private List<AttrEntity> attrEntities;
 

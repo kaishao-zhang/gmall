@@ -23,7 +23,6 @@ public class CategoryBoundsServiceImpl extends ServiceImpl<CategoryBoundsDao, Ca
                 new Query<CategoryBoundsEntity>().getPage(params),
                 new QueryWrapper<CategoryBoundsEntity>()
         );
-
         return new PageVo(page);
     }
 

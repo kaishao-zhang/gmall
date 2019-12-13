@@ -18,6 +18,7 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         //进行跨域访问时，被允许的域，不要写*否则就会无法使用cookie
         config.addAllowedOrigin("http://127.0.0.1:1000");
+        config.addAllowedOrigin("http://localhost:1000");
         //允许的头信息
         config.addAllowedHeader("*");
         //允许的请求方式

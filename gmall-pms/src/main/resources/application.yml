@@ -13,8 +13,17 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+  rabbitmq:
+    host: 192.168.199.199
+    port: 5672
+    virtual-host: /kaishao
+    username: kaishao
+    password: 123456
 mybatis-plus:
   global-config:
     db-config:
       id-type: auto
   mapper-locations: classpath:mapper/pms/**/*.xml
+item:
+  rabbitmq:
+    exchange: GMALL-PMS-EXCHANGE

@@ -1,6 +1,7 @@
 package com.atguigu.gmall.pms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -33,6 +34,12 @@ public class ProductAttrValueController {
     @Autowired
     private ProductAttrValueService productAttrValueService;
 
+    @GetMapping("{spuId}")
+    public Resp<List<ProductAttrValueEntity>> queryAttrValueBySpuId(@PathVariable("spuId")Long spuId){
+        List<ProductAttrValueEntity> attrValueEntities =this.productAttrValueService.queryAttrValueBySpuId(spuId);
+        return Resp.ok(attrValueEntities);
+    }
+
     /**
      * 列表
      */
@@ -41,7 +48,6 @@ public class ProductAttrValueController {
     @PreAuthorize("hasAuthority('pms:productattrvalue:list')")
     public Resp<PageVo> list(QueryCondition queryCondition) {
         PageVo page = productAttrValueService.queryPage(queryCondition);
-
         return Resp.ok(page);
     }
 

@@ -1,10 +1,12 @@
 package com.atguigu.gmall.pms.service;
 
-import com.atguigu.gmall.pms.vo.AttrGroupVo;
+import com.atguigu.gmall.pms.vo.AttrGroupVO;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.atguigu.gmall.pms.entity.AttrGroupEntity;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
+
+import java.util.List;
 
 
 /**
@@ -20,6 +22,8 @@ public interface AttrGroupService extends IService<AttrGroupEntity> {
     //根据分组的id
     PageVo queryAttrGroupById(QueryCondition condition, Long catId);
     //根据分组的id查询一个AttrGroupController
-    AttrGroupVo withAttrs(Long gid);
+    AttrGroupVO withAttrs(Long gid);
+    //根据分类id查询查询所有的group信息
+    List<AttrGroupVO> queryGroupAttrByCatId(Long catId);
 }
 

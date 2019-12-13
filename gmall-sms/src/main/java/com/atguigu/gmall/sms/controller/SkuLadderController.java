@@ -7,6 +7,7 @@ import java.util.Map;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.sms.vo.SkuSaleInfoVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,11 @@ import com.atguigu.gmall.sms.service.SkuLadderService;
 public class SkuLadderController {
     @Autowired
     private SkuLadderService skuLadderService;
-
+    @PostMapping("/skuSale/save")
+    public Resp<Object> saveSkuSaleInfo(@RequestBody SkuSaleInfoVO skuSaleInfoVO){
+        this.skuLadderService.saveSkuSaleInfo(skuSaleInfoVO);
+        return Resp.ok(null);
+    }
     /**
      * 列表
      */

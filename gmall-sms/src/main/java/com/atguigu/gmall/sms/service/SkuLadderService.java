@@ -1,5 +1,6 @@
 package com.atguigu.gmall.sms.service;
 
+import com.atguigu.gmall.sms.vo.SkuSaleInfoVO;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.atguigu.gmall.sms.entity.SkuLadderEntity;
 import com.atguigu.core.bean.PageVo;
@@ -16,5 +17,7 @@ import com.atguigu.core.bean.QueryCondition;
 public interface SkuLadderService extends IService<SkuLadderEntity> {
 
     PageVo queryPage(QueryCondition params);
+    //保存sku的销售信息
+    void saveSkuSaleInfo(SkuSaleInfoVO skuSaleInfoVO);
 }
 

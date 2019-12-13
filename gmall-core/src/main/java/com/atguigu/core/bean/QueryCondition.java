@@ -24,4 +24,6 @@ public class QueryCondition {
 
     @ApiModelProperty(name = "asc",value = "系统默认排序",required = false)
     private String asc = "asc";
+    @ApiModelProperty(name = "key",value = "用户的检索条件",required = false)
+    private String key ;
 }

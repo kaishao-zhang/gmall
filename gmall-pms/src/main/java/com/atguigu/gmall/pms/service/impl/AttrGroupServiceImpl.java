@@ -4,16 +4,12 @@ import com.atguigu.gmall.pms.dao.AttrAttrgroupRelationDao;
 import com.atguigu.gmall.pms.dao.AttrDao;
 import com.atguigu.gmall.pms.entity.AttrAttrgroupRelationEntity;
 import com.atguigu.gmall.pms.entity.AttrEntity;
-import com.atguigu.gmall.pms.service.AttrAttrgroupRelationService;
-import com.atguigu.gmall.pms.vo.AttrGroupVo;
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.atguigu.gmall.pms.vo.AttrGroupVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -56,9 +52,9 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
     @Autowired
     private AttrDao attrDao;
     @Override
-    public AttrGroupVo withAttrs(Long gid) {
+    public AttrGroupVO withAttrs(Long gid) {
         //创建一个AttrGroupVo对象
-        AttrGroupVo groupVo = new AttrGroupVo();
+        AttrGroupVO groupVo = new AttrGroupVO();
         //将AttrGroupEntities封装进去AttrGroupVo
         AttrGroupEntity groupEntity = this.attrGroupDao.selectById(gid);
         BeanUtils.copyProperties(groupEntity,groupVo);
@@ -75,6 +71,15 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
         List<AttrEntity> attrEntities = this.attrDao.selectBatchIds(attrIds);
         groupVo.setAttrEntities(attrEntities);
         return groupVo;
+    }
+
+    @Override
+    public List<AttrGroupVO> queryGroupAttrByCatId(Long catId) {
+        //根据catid查询所有的分组
+        List<AttrGroupEntity> attrGroupEntities = this.list(new QueryWrapper<AttrGroupEntity>().eq("catelog_id", catId));
+        //根据所有的分组查询所有的属性
+        return attrGroupEntities.stream().map(attrGroupEntity -> this.withAttrs(attrGroupEntity.getAttrGroupId())).collect(Collectors.toList());
+
     }
 
 }
