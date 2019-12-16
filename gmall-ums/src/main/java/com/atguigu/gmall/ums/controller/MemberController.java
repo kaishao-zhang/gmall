@@ -1,7 +1,6 @@
 package com.atguigu.gmall.ums.controller;
 
 import java.util.Arrays;
-import java.util.Map;
 
 
 import com.atguigu.core.bean.PageVo;
@@ -35,7 +34,17 @@ public class MemberController {
     @GetMapping("check/{data}/{type}")
     public Resp<Boolean> check(@PathVariable("data")String data ,@PathVariable("type")Integer type){
         Boolean flag = this.memberService.check(data,type);
-        return null;
+        return Resp.ok(flag);
+    }
+    @PostMapping("/register")
+    public Resp<Object> register(MemberEntity memberEntity ,@RequestParam("code")String code){
+        this.memberService.register(memberEntity,code);
+        return Resp.ok(null);
+    }
+    @GetMapping("/query")
+    public Resp<MemberEntity> query(@RequestParam("username")String username,@RequestParam("password")String password){
+        MemberEntity memberEntity = this.memberService.query(username,password);
+        return Resp.ok(memberEntity);
     }
     /**
      * 列表

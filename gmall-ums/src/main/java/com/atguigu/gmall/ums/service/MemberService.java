@@ -18,5 +18,9 @@ public interface MemberService extends IService<MemberEntity> {
     PageVo queryPage(QueryCondition params);
     //判断信息是否合格，1：用户名，2：手机，3：邮箱
     Boolean check(String data, Integer type);
+    //注册账号信息
+    void register(MemberEntity memberEntity, String code);
+    // 根据用户名和密码查询用户信息
+    MemberEntity query(String username, String password);
 }
 
