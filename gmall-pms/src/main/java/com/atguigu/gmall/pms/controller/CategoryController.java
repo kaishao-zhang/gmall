@@ -8,6 +8,7 @@ import java.util.Map;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.pms.vo.IndexVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @GetMapping("{id}")
+    public Resp<List<IndexVO>> querySubCategory(@PathVariable("id") Long id){
+        List<IndexVO> indexVOS = categoryService.querySubCategory(id);
+        return Resp.ok(indexVOS);
+    }
     @GetMapping
     public Resp<List<CategoryEntity>> queryCategory(@RequestParam(value = "level", defaultValue = "0") Integer level,
                                                     @RequestParam(value = "parentCid", required = false) Long parentCid) {

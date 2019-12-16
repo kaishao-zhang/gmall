@@ -16,5 +16,7 @@ import com.atguigu.core.bean.QueryCondition;
 public interface MemberService extends IService<MemberEntity> {
 
     PageVo queryPage(QueryCondition params);
+    //判断信息是否合格，1：用户名，2：手机，3：邮箱
+    Boolean check(String data, Integer type);
 }
 

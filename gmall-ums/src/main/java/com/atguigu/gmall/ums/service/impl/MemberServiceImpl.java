@@ -27,4 +27,17 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
         return new PageVo(page);
     }
 
+    @Override
+    public Boolean check(String data, Integer type) {
+        QueryWrapper<MemberEntity> wrapper = new QueryWrapper<>();
+        switch (type) {
+            case 1: wrapper.eq("username",data); break;
+            case 2: wrapper.eq("mobile",data); break;
+            case 3: wrapper.eq("email",data); break;
+            default: return false;
+        }
+        int count = this.count(wrapper);
+        return count == 0;
+    }
+
 }

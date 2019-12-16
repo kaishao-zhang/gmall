@@ -1,6 +1,7 @@
 package com.atguigu.gmall.sms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -8,6 +9,7 @@ import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
 import com.atguigu.gmall.sms.vo.SkuSaleInfoVO;
+import com.atguigu.gmall.sms.vo.SkuSaleVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,11 @@ public class SkuLadderController {
     public Resp<Object> saveSkuSaleInfo(@RequestBody SkuSaleInfoVO skuSaleInfoVO){
         this.skuLadderService.saveSkuSaleInfo(skuSaleInfoVO);
         return Resp.ok(null);
+    }
+    @GetMapping("{skuId}")
+    public Resp<List<SkuSaleVO>> querySkuSaleBySkuId(@PathVariable("skuId")Long skuId){
+        List<SkuSaleVO> skuSaleVOS = this.skuLadderService.querySkuSaleBySkuId(skuId);
+        return Resp.ok(skuSaleVOS);
     }
     /**
      * 列表

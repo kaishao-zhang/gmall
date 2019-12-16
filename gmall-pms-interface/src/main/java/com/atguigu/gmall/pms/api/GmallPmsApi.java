@@ -4,11 +4,10 @@ import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
 import com.atguigu.gmall.pms.entity.*;
+import com.atguigu.gmall.pms.vo.IndexVO;
+import com.atguigu.gmall.pms.vo.ItemGroupVO;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,4 +35,26 @@ public interface GmallPmsApi {
     //根据spuid获取所有的spuentity
     @GetMapping("pms/spuinfo/info/{id}")
     public Resp<SpuInfoEntity> querySpuInfoById(@PathVariable("id") Long id);
+    //查询分级的菜单信息
+    @GetMapping("pms/category")
+    public Resp<List<CategoryEntity>> queryCategory(@RequestParam(value = "level", defaultValue = "0") Integer level,
+                                                    @RequestParam(value = "parentCid", required = false) Long parentCid);
+    //根据一级分类id查询所有的2,3级分类信息
+    @GetMapping("pms/category/{id}")
+    public Resp<List<IndexVO>> querySubCategory(@PathVariable("id") Long id);
+    //根据skuid查询所有的sku信息
+    @GetMapping("pms/skuinfo/info/{skuId}")
+    public Resp<SkuInfoEntity> querySkuinfoById(@PathVariable("skuId") Long skuId);
+    //根据sku的id查询所有的sku图片
+    @GetMapping("pms/skuimages/{skuId}")
+    public Resp<List<SkuImagesEntity>> querySkuImageBySkuId(@PathVariable("skuId")Long skuId);
+    //根据spuId查询spu下的所有sku和属性值信息
+    @GetMapping("pms/skusaleattrvalue/{spuId}")
+    public Resp<List<SkuSaleAttrValueEntity>> querySkuSaleAttrValBySpuId(@PathVariable("spuId")Long spuId);
+    //根据spuId查询所有的spu描述信息
+    @GetMapping("pms/spuinfodesc/info/{spuId}")
+    public Resp<SpuInfoDescEntity> querySpuInfoDescById(@PathVariable("spuId") Long spuId);
+
+    @GetMapping("pms/attrgroup/item/group/{cid}/{spuId}")
+    public Resp<List<ItemGroupVO>> queryItemGroupVOByCidAndSpuId(@PathVariable("cid")Long cid, @PathVariable("spuId")Long spuId);
 }

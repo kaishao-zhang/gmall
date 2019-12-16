@@ -34,5 +34,5 @@ spring:
           uri: lb://index-service
           predicates:
             - Path=/api/index/**
-          filter:
-
+          filters:
+            - RewritePath=/api(?<segment>/?.*), $\{segment}

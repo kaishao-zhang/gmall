@@ -5,6 +5,8 @@ import com.atguigu.gmall.pms.entity.SkuImagesEntity;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 
+import java.util.List;
+
 
 /**
  * sku图片
@@ -16,5 +18,7 @@ import com.atguigu.core.bean.QueryCondition;
 public interface SkuImagesService extends IService<SkuImagesEntity> {
 
     PageVo queryPage(QueryCondition params);
+    //根据sku的id查询所有的sku相关照片
+    List<SkuImagesEntity> querySkuImageBySkuId(Long skuId);
 }
 

@@ -1,6 +1,7 @@
 package com.atguigu.gmall.pms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -32,6 +33,12 @@ import com.atguigu.gmall.pms.service.SkuImagesService;
 public class SkuImagesController {
     @Autowired
     private SkuImagesService skuImagesService;
+
+    @GetMapping("/{skuId}")
+    public Resp<List<SkuImagesEntity>> querySkuImageBySkuId(@PathVariable("skuId")Long skuId){
+        List<SkuImagesEntity> skuImagesEntities = this.skuImagesService.querySkuImageBySkuId(skuId);
+        return Resp.ok(skuImagesEntities);
+    }
 
     /**
      * 列表

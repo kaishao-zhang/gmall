@@ -9,7 +9,6 @@ import com.atguigu.gmall.pms.service.SkuSaleAttrValueService;
 import com.atguigu.gmall.pms.vo.ProductAttrValueVO;
 import com.atguigu.gmall.pms.vo.SkuInfoVO;
 import com.atguigu.gmall.pms.vo.SpuInfoVO;
-import com.atguigu.gmall.sms.feign.SaveSkuSale;
 import com.atguigu.gmall.sms.vo.SkuSaleInfoVO;
 import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.commons.lang3.StringUtils;

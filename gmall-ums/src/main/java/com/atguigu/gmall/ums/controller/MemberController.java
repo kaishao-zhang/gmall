@@ -32,7 +32,11 @@ import com.atguigu.gmall.ums.service.MemberService;
 public class MemberController {
     @Autowired
     private MemberService memberService;
-
+    @GetMapping("check/{data}/{type}")
+    public Resp<Boolean> check(@PathVariable("data")String data ,@PathVariable("type")Integer type){
+        Boolean flag = this.memberService.check(data,type);
+        return null;
+    }
     /**
      * 列表
      */

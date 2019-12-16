@@ -1,6 +1,6 @@
 package com.atguigu.gmall.pms.feign;
 
-import com.atguigu.gmall.sms.feign.SaveSkuSale;
+import com.atguigu.gmall.sms.feign.GmallSmsApi;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
@@ -8,5 +8,5 @@ import org.springframework.cloud.openfeign.FeignClient;
  * @create 2019-12-07 10:30
  */
 @FeignClient("sms-service")
-public interface GmallSmsClient extends SaveSkuSale {
+public interface GmallSmsClient extends GmallSmsApi {
 }
